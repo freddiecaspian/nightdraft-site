@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy - NightDraft</title>
+  <meta name="description" content="How NightDraft handles Google user data, including the Limited Use commitment, data path, retention and deletion.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <article class="policy">
+    <a class="back" href="/">&larr; NightDraft</a>
+    <h1>Privacy Policy</h1>
+    <p class="dates">
+      <strong>Effective date:</strong> [DD Month YYYY when published]<br>
+      <strong>Last updated:</strong> [DD Month YYYY]
+    </p>
+
+    <h2>1. Who we are</h2>
+    <p>NightDraft is a software product operated by Freddie Chambers ("NightDraft", "we", "us", "our"). NightDraft helps restaurant owners draft replies to inbound booking enquiries in their own voice. We are based in the United Kingdom and accessible at nightdraft.com.</p>
+    <p>Contact for privacy questions: privacy@nightdraft.com<br>
+    Contact for security issues: security@nightdraft.com</p>
+
+    <h2>2. What this policy covers</h2>
+    <p>This policy explains how NightDraft handles data when a restaurant owner connects their Google account to NightDraft. It covers:</p>
+    <ul>
+      <li>The data we receive from Google APIs (Gmail content)</li>
+      <li>How that data is used to draft replies</li>
+      <li>How long we keep it</li>
+      <li>Who can access it</li>
+      <li>How an owner can delete it</li>
+    </ul>
+    <p>It does not cover anything done outside the NightDraft application.</p>
+
+    <h2>3. The Google data we access</h2>
+    <p>When a restaurant owner authorises NightDraft, we request exactly two OAuth scopes from Google:</p>
+    <ul>
+      <li><code>https://www.googleapis.com/auth/gmail.readonly</code> (classified by Google as a <em>restricted</em> scope) - lets NightDraft read the body of inbound emails in the connected mailbox so it can identify booking enquiries and extract context for the draft reply</li>
+      <li><code>https://www.googleapis.com/auth/gmail.drafts.create</code> (classified by Google as a <em>sensitive</em> scope) - lets NightDraft create a draft reply in the connected mailbox's Drafts folder, attached to the original thread, for the owner to review and send</li>
+    </ul>
+    <p>We do not request <code>gmail.send</code>, <code>gmail.modify</code>, <code>gmail.compose</code>, or <code>mail.google.com</code>. We cannot send messages from a connected account. We cannot delete or modify messages other than drafts we have created. We cannot change account settings.</p>
+
+    <h2>4. Limited Use - Google API Services User Data Policy</h2>
+    <p class="limited-use"><strong>NightDraft's use and transfer of information received from Google APIs to any other app will adhere to Google API Services User Data Policy, including the Limited Use requirements.</strong></p>
+    <p>In practice this means:</p>
+    <ul>
+      <li>We only use the Gmail data we receive to provide the user-facing feature the owner authorised (drafting replies to booking enquiries in their voice)</li>
+      <li>We do not transfer Google user data to third parties except as necessary to provide and improve the feature the owner authorised, or to comply with applicable law, or as part of a merger, acquisition, or sale of assets where the new owner is bound by this same policy</li>
+      <li>We do not use Google user data for advertising purposes</li>
+      <li>We do not allow humans to read Google user data except (a) with the owner's explicit consent for specific messages, (b) for security reasons (debugging an issue affecting their account, with the owner's consent), (c) to comply with applicable law, or (d) for internal operations where data is aggregated and anonymised</li>
+      <li>We do not use Google user data to develop, improve, or train generalised or general-purpose AI or machine-learning models</li>
+    </ul>
+
+    <h2>5. The exact data path</h2>
+    <p>When a booking enquiry arrives at a connected mailbox:</p>
+    <ol>
+      <li><strong>Read.</strong> NightDraft fetches the message body via the Gmail API using the <code>gmail.readonly</code> scope</li>
+      <li><strong>Process transiently.</strong> The message body is sent to an AI provider (currently Anthropic's Claude API) along with the restaurant's playbook so a draft reply can be composed. This is a transient API call; the message is not stored on Anthropic's side beyond the duration of the API call</li>
+      <li><strong>Draft.</strong> NightDraft creates a draft reply in the connected mailbox's Drafts folder, attached to the original thread, using the <code>gmail.drafts.create</code> scope</li>
+      <li><strong>Owner review.</strong> The owner opens their Gmail Drafts folder, reads the draft, edits it freely, and sends it themselves. NightDraft has no send capability</li>
+      <li><strong>Retain only the operational record.</strong> NightDraft retains, for up to 14 days, a copy of the inbound message body, the generated draft, the owner's final sent message (for the learning loop that improves draft quality over time), and operational metadata (sender domain, timestamps, scope usage logs). After 14 days these are deleted, with the exception of aggregated and anonymised statistics described in section 6.</li>
+    </ol>
+
+    <h2>6. Retention</h2>
+    <table>
+      <thead><tr><th>Data</th><th>Retention</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Message bodies of inbound enquiries</td><td>14 days</td><td>Generate the draft, capture the edit-log for quality improvement, audit any disputes</td></tr>
+        <tr><td>Generated draft bodies</td><td>14 days</td><td>Edit-log comparison against what the owner actually sent</td></tr>
+        <tr><td>Owner's sent message bodies (where we can read them)</td><td>14 days</td><td>Edit-log comparison</td></tr>
+        <tr><td>Operational metadata (sender domain, timestamps, scope usage)</td><td>90 days</td><td>Debugging, security audit, dispute resolution</td></tr>
+        <tr><td>Aggregated and anonymised quality statistics</td><td>Indefinitely</td><td>Improving the playbook; never traceable to an individual diner or email</td></tr>
+        <tr><td>OAuth tokens</td><td>Until the owner revokes consent or NightDraft is uninstalled</td><td>Maintaining the connection</td></tr>
+      </tbody>
+    </table>
+    <p>We will reduce these windows on request. We will delete any specific item on request (see section 9).</p>
+
+    <h2>7. AI usage disclosure</h2>
+    <p>NightDraft uses Anthropic's Claude API to draft replies. We send the following to Anthropic for each draft:</p>
+    <ul>
+      <li>The booking enquiry's message body</li>
+      <li>The restaurant's playbook (voice templates, pricing language, cancellation policy)</li>
+      <li>A system prompt describing the desired output format</li>
+    </ul>
+    <p>Anthropic processes this transiently to generate the draft. Per Anthropic's API terms, inputs are not used to train Anthropic's models and are not retained beyond the duration of the API call (Anthropic logs metadata for abuse prevention for 30 days, but not the prompt content).</p>
+    <p>NightDraft does not train any AI or machine-learning model on customer Gmail data. Aggregated and anonymised quality statistics (see section 6) inform manual updates to the playbook, but never feed into model training.</p>
+
+    <h2>8. Sub-processors</h2>
+    <table>
+      <thead><tr><th>Sub-processor</th><th>Purpose</th><th>Data shared</th></tr></thead>
+      <tbody>
+        <tr><td>Google (Gmail API)</td><td>Source of inbound mail; destination for drafts</td><td>Authorised by the owner</td></tr>
+        <tr><td>Anthropic (Claude API)</td><td>Draft generation</td><td>Message body + playbook, transient</td></tr>
+        <tr><td>Vercel (hosting)</td><td>NightDraft homepage and policy hosting</td><td>None - no Gmail data</td></tr>
+        <tr><td>Supabase (database, planned)</td><td>Storing operational records (post v0.5)</td><td>Operational metadata + 14-day data per section 6</td></tr>
+      </tbody>
+    </table>
+    <p>This list will be updated as the product evolves. Material changes will be announced to current customers via email.</p>
+
+    <h2>9. Owner rights</h2>
+    <p>The owner of a connected mailbox can:</p>
+    <ul>
+      <li><strong>Revoke consent at any time</strong> from their Google Account at myaccount.google.com/permissions. NightDraft loses access immediately. Existing stored data is deleted within 30 days.</li>
+      <li><strong>Request deletion of specific items</strong> by emailing privacy@nightdraft.com. We respond within 7 days.</li>
+      <li><strong>Request export of stored data</strong> by emailing privacy@nightdraft.com.</li>
+      <li><strong>Receive a copy of edit-log entries we have stored about their drafts</strong> on request.</li>
+    </ul>
+    <p>Diners whose emails are read (the senders of the inbound enquiries) do not have a direct relationship with NightDraft, but if they email privacy@nightdraft.com requesting deletion of an item about them, we will action that within 7 days.</p>
+
+    <h2>10. Security</h2>
+    <ul>
+      <li>All Gmail data is transmitted over HTTPS (TLS 1.2 or higher)</li>
+      <li>All Gmail data at rest is encrypted (AES-256)</li>
+      <li>OAuth tokens are stored encrypted, with access restricted to NightDraft operational scripts</li>
+      <li>Production systems use Content Security Policy and HTTP Strict Transport Security headers</li>
+      <li>NightDraft runs on Apple hardware in the United Kingdom (Mac Mini) and Vercel cloud infrastructure in the European Union</li>
+      <li>Security issues can be reported to security@nightdraft.com</li>
+    </ul>
+
+    <h2>11. Children's data</h2>
+    <p>NightDraft is a B2B product. We do not knowingly process data of children under 16. If you believe we have, contact privacy@nightdraft.com.</p>
+
+    <h2>12. International transfers</h2>
+    <p>Gmail content may be transferred between the United Kingdom (where NightDraft runs) and the United States (where Anthropic's API is hosted). These transfers are covered by the EU-US Data Privacy Framework and the UK Extension to that framework. The Anthropic API call is transient; no persistent storage occurs in the United States.</p>
+
+    <h2>13. Changes to this policy</h2>
+    <p>We will announce material changes by email to current customers at least 30 days before they take effect. Cosmetic changes (typo fixes, link updates) may be made without notice. The current version is always at nightdraft.com/privacy with a "Last updated" date at the top.</p>
+
+    <h2>14. Complaints</h2>
+    <p>If you believe NightDraft has mishandled Gmail data, please email privacy@nightdraft.com first so we can investigate. If you are unsatisfied with our response, you have the right to lodge a complaint with the UK Information Commissioner's Office at ico.org.uk.</p>
+
+    <h2>15. Contact</h2>
+    <p>NightDraft<br>
+    [postal address - to be added when business address registered]<br>
+    United Kingdom</p>
+    <p>Email: privacy@nightdraft.com (privacy)<br>
+    Email: security@nightdraft.com (security)<br>
+    Email: hello@nightdraft.com (general)</p>
+
+    <a class="back" href="/">&larr; Back to NightDraft</a>
+  </article>
+</body>
+</html>

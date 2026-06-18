@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Lorne SaaS - Product Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg: #faf8f5;
+    --bg-card: #ffffff;
+    --bg-hover: #f5f2ee;
+    --bg-inset: #f0ece6;
+    --border: #e8e2d9;
+    --border-strong: #d4cdc2;
+    --text: #2c2520;
+    --text-secondary: #7a7067;
+    --text-tertiary: #a69e94;
+    --wine: #8b2252;
+    --wine-dim: rgba(139, 34, 82, 0.08);
+    --wine-light: #a63a6a;
+    --green: #2d7a4f;
+    --green-dim: rgba(45, 122, 79, 0.08);
+    --amber: #b8860b;
+    --amber-dim: rgba(184, 134, 11, 0.08);
+    --blue: #3d6b99;
+    --blue-dim: rgba(61, 107, 153, 0.08);
+    --red: #c24b3a;
+    --red-dim: rgba(194, 75, 58, 0.08);
+    --purple: #7b5ea7;
+    --purple-dim: rgba(123, 94, 167, 0.08);
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- NAV ---- */
+.nav {
+    position: relative;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 0;
+}
+
+.nav-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 28px;
+    width: auto;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.nav-tab {
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--text); background: var(--bg-inset); }
+
+/* ---- CONTAINER ---- */
+.container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+/* ---- SCREEN TITLE ---- */
+.screen-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* ---- HERO / STATUS BAR ---- */
+.status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.greeting h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+.greeting p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.status-badge.connected {
+    background: var(--green-dim);
+    color: var(--green);
+}
+
+.status-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* ---- SERVICE SUMMARY ---- */
+.service-summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.service-date {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+}
+
+.covers-count {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+/* ---- PROGRESS BAR ---- */
+.progress-bar-container {
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--wine);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+.progress-label {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* ---- SECTION HEADER ---- */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.section-header h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+.filter-pills {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.filter-pill {
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s ease;
+}
+
+.filter-pill.active {
+    color: var(--text);
+    background: var(--bg-inset);
+}
+
+.pill-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1rem;
+    height: 1rem;
+    padding: 0 0.25rem;
+    border-radius: 999px;
+    background: var(--border);
+    font-size: 0.55rem;
+    font-weight: 700;
+    margin-left: 0.15rem;
+}
+
+.filter-pill.active .pill-count {
+    background: var(--border-strong);
+}
+
+/* ---- EMAIL CARDS ---- */
+.email-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.email-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    border-radius: 2px 12px 12px 2px;
+    padding: 1rem 1rem 1rem 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(44, 37, 32, 0.04);
+}
+
+.email-card:active { transform: scale(0.98); }
+.email-card:hover { border-color: var(--border-strong); box-shadow: 0 4px 16px rgba(44, 37, 32, 0.08); transform: translateY(-1px); }
+
+/* Urgency left-border colours */
+.email-card.urgency-action { border-left-color: var(--wine); }
+.email-card.urgency-review { border-left-color: var(--amber); }
+.email-card.urgency-done { border-left-color: var(--green); opacity: 0.7; }
+.email-card.urgency-muted { border-left-color: var(--border); opacity: 0.45; }
+.email-card.urgency-cancel { border-left-color: var(--red); }
+
+.email-card.expanded {
+    border-color: var(--border-strong);
+    border-left-color: var(--wine);
+    box-shadow: 0 4px 20px rgba(44, 37, 32, 0.1);
+    opacity: 1;
+}
+
+.email-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.email-sender {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+
+.email-time {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+    margin-top: 0.1rem;
+}
+
+.email-subject {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+}
+
+.email-tags {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tag.booking { background: var(--blue-dim); color: var(--blue); }
+.tag.dietary { background: var(--amber-dim); color: var(--amber); }
+.tag.large-party { background: var(--red-dim); color: var(--red); }
+.tag.modification { background: var(--purple-dim); color: var(--purple); }
+.tag.cancellation { background: var(--red-dim); color: var(--red); }
+.tag.available { background: var(--green-dim); color: var(--green); }
+.tag.partial { background: var(--amber-dim); color: var(--amber); }
+.tag.unavailable { background: var(--red-dim); color: var(--red); }
+
+/* ---- EXTRACTED DETAILS ---- */
+.extracted-details {
+    background: var(--bg-inset);
+    border-radius: 8px;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    border: 1px solid var(--border);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.detail-label {
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+}
+
+.detail-value {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ---- DRAFT SECTION ---- */
+.draft-section {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+}
+
+.draft-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--wine);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.draft-label svg { stroke: var(--wine); }
+
+.draft-text {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    background: linear-gradient(to bottom, var(--bg-inset) 0%, rgba(240, 236, 230, 0.5) 100%);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--wine);
+    border-radius: 2px 8px 8px 2px;
+    padding: 0.85rem 0.85rem 0.85rem 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.draft-text p { margin-bottom: 0.6rem; }
+.draft-text p:last-child { margin-bottom: 0; }
+
+.draft-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.7rem;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    text-align: center;
+}
+
+.btn:active { transform: scale(0.96); }
+
+.btn-primary {
+    background: var(--green);
+    color: #fff;
+}
+
+.btn-primary:hover { background: #257a45; }
+
+.btn-secondary {
+    background: var(--bg-inset);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover { background: var(--bg-hover); border-color: var(--border-strong); }
+
+.btn-ghost {
+    background: none;
+    color: var(--text-tertiary);
+    border: 1px solid var(--border);
+}
+
+/* ---- ORIGINAL EMAIL ---- */
+.original-email {
+    margin-top: 0.75rem;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    background: transparent;
+    border-radius: 0;
+    border-left: 2px solid var(--border-strong);
+}
+
+.original-email-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.original-email-text {
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* ---- STALE DRAFT WARNING ---- */
+.stale-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--amber-dim);
+    border: 1px solid rgba(184, 134, 11, 0.2);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--amber);
+    font-weight: 500;
+}
+
+/* ---- HANDLED EXTERNALLY ---- */
+.handled-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    background: var(--green-dim);
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ---- SETTINGS PREVIEW ---- */
+.settings-section {
+    margin-bottom: 1.5rem;
+}
+
+.settings-section h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.rule-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rule-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.rule-delete {
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.add-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.7rem;
+    border: 1px dashed var(--border-strong);
+    border-radius: 10px;
+    color: var(--text-tertiary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.add-rule:hover {
+    border-color: var(--text-tertiary);
+    color: var(--text-secondary);
+}
+
+/* ---- EXAMPLE EMAIL CARD ---- */
+.example-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.example-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+}
+
+.example-tag {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--wine);
+}
+
+.example-preview {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-style: italic;
+}
+
+/* ---- SCREEN DIVIDER ---- */
+.screen-divider {
+    margin: 2.5rem 0;
+    padding: 2rem 0 0;
+    border-top: 1px solid var(--border);
+    position: relative;
+}
+
+.screen-divider::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 0.75rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+    text-align: center;
+    padding: 2rem 0 3rem;
+    color: var(--text-tertiary);
+    font-size: 0.7rem;
+}
+
+.footer a {
+    color: var(--wine);
+    text-decoration: none;
+}
+
+/* ---- CONNECT SCREEN ---- */
+.connect-screen {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.connect-screen h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.connect-screen p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.google-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.5rem;
+    background: var(--text);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.google-btn:hover { opacity: 0.9; }
+.google-btn:active { transform: scale(0.97); }
+
+.google-btn svg { width: 20px; height: 20px; }
+
+.connect-note {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+}
+
+/* ---- VOICE CARD ---- */
+.voice-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.voice-quote {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text);
+    font-style: italic;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.voice-caption {
+    font-size: 0.65rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.75rem;
+    font-weight: 500;
+}
+
+/* ---- VOICE TRAITS ---- */
+.voice-traits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.voice-trait {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.trait-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.trait-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.trait-fill {
+    height: 100%;
+    background: var(--wine);
+    border-radius: 2px;
+}
+
+.trait-range {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+}
+
+/* ---- STYLE PROFILE ---- */
+.profile-summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+}
+
+.profile-row:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-key {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.profile-val {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: right;
+    color: var(--text);
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.email-card { animation: slideUp 0.3s ease both; }
+.email-card:nth-child(1) { animation-delay: 0.05s; }
+.email-card:nth-child(2) { animation-delay: 0.1s; }
+.email-card:nth-child(3) { animation-delay: 0.15s; }
+.email-card:nth-child(4) { animation-delay: 0.2s; }
+.email-card:nth-child(5) { animation-delay: 0.25s; }
+.email-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* Expandable content */
+.expandable { display: none; }
+.email-card.expanded .expandable { display: block; }
+.email-card.expanded { border-color: var(--wine); }
+
+/* ---- THREAD HISTORY ---- */
+.thread-history {
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+}
+
+.thread-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 0.35rem 0;
+    font-weight: 500;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.thread-toggle:hover { color: var(--text-secondary); }
+
+.thread-toggle .chevron {
+    transition: transform 0.2s ease;
+    font-size: 0.6rem;
+}
+
+.thread-toggle.open .chevron { transform: rotate(180deg); }
+
+.thread-messages {
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.thread-messages.visible { display: block; }
+
+.thread-msg {
+    padding: 0.65rem 0.75rem;
+    border-left: 2px solid var(--border);
+    margin-bottom: 0.5rem;
+    margin-left: 0.25rem;
+}
+
+.thread-msg.outbound { border-left-color: var(--wine); }
+.thread-msg.inbound { border-left-color: var(--blue); }
+
+.thread-msg-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.thread-msg-sender {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.thread-msg-sender.you { color: var(--wine); }
+.thread-msg-sender.guest { color: var(--blue); }
+
+.thread-msg-time {
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+}
+
+.thread-msg-body {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* ---- BOOKING CARD (OpenTable handoff) ---- */
+.booking-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(44, 37, 32, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+}
+
+.booking-overlay.visible {
+    display: flex;
+}
+
+.booking-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-width: 420px;
+    width: 100%;
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+    box-shadow: 0 16px 48px rgba(44, 37, 32, 0.15);
+}
+
+.booking-card-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.booking-card-header .check {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--green-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+    font-size: 1.5rem;
+}
+
+.booking-card-header h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.booking-card-header p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.booking-card-details {
+    padding: 1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.booking-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.booking-detail-label {
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+}
+
+.booking-detail-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.booking-detail.full {
+    grid-column: 1 / -1;
+}
+
+.booking-card-actions {
+    padding: 1rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.btn-opentable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    background: #da3743;
+    color: white;
+    transition: all 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-opentable:hover { background: #c42f3a; }
+.btn-opentable:active { transform: scale(0.97); }
+
+.btn-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+}
+
+.btn-copy:hover { border-color: var(--border-strong); color: var(--text); }
+
+.btn-dismiss {
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-dismiss:hover { color: var(--text-secondary); }
+
+.copy-text {
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-family: 'DM Sans', monospace;
+    margin-bottom: 0.25rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ======== NAV ======== -->
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-brand"><img src="logo.webp" alt="Lorne" class="nav-logo"></div>
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showScreen('inbox')">Inbox</button>
+            <button class="nav-tab" onclick="showScreen('style')">Voice</button>
+            <button class="nav-tab" onclick="showScreen('settings')">Settings</button>
+        </div>
+    </div>
+</nav>
+
+<!-- ======== SCREEN: INBOX (Morning Queue) ======== -->
+<div id="screen-inbox" class="container">
+
+    <div class="status-bar">
+        <div class="greeting">
+            <h1>Morning, Katie</h1>
+            <p>6 guests waiting for a reply</p>
+        </div>
+        <div class="status-badge connected">
+            <span class="dot"></span>
+            Synced
+        </div>
+    </div>
+
+    <div class="service-summary">
+        <div class="service-date">Tonight's service &mdash; Saturday 29 March</div>
+        <div class="covers-count">28 covers across 6 requests</div>
+    </div>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 25%"></div>
+        </div>
+        <div class="progress-label">2 of 8 done &middot; 6 to go</div>
+    </div>
+
+    <div class="section-header">
+        <h2>Overnight emails</h2>
+        <div class="filter-pills">
+            <button class="filter-pill active" onclick="filterCards(event, 'all')">All <span class="pill-count">8</span></button>
+            <button class="filter-pill" onclick="filterCards(event, 'booking')">Bookings <span class="pill-count">3</span></button>
+            <button class="filter-pill" onclick="filterCards(event, 'modification')">Changes <span class="pill-count">2</span></button>
+            <button class="filter-pill" onclick="filterCards(event, 'cancellation')">Cancel <span class="pill-count">1</span></button>
+        </div>
+    </div>
+
+    <div class="email-list">
+
+        <!-- EMAIL 1: Standard booking - expanded to show the full flow -->
+        <div class="email-card expanded urgency-action" onclick="toggleCard(event, this)">
+            <div class="email-card-header">
+                <div class="email-sender">Sarah Mitchell</div>
+                <div class="email-time">11:42pm</div>
+            </div>
+            <div class="email-subject">Booking for anniversary dinner - party of 4</div>
+            <div class="email-tags">
+                <span class="tag booking">Booking</span>
+                <span class="tag available">Available</span>
+            </div>
+
+            <div class="expandable">
+                <div class="extracted-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Party size</div>
+                        <div class="detail-value">4</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Date</div>
+                        <div class="detail-value">Saturday 5 April</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Time</div>
+                        <div class="detail-value">7:30pm</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Occasion</div>
+                        <div class="detail-value">Wedding anniversary</div>
+                    </div>
+                </div>
+
+                <div class="original-email">
+                    <div class="original-email-label">Latest email</div>
+                    <div class="original-email-text">
+                        Hi there, my husband and I are celebrating our 10th wedding anniversary and would love to book a table for 4 on Saturday 5th April around 7.30pm if possible? We've heard wonderful things about Lorne's wine list. Many thanks, Sarah
+                    </div>
+                </div>
+
+                <!-- Thread history -->
+                <div class="thread-history">
+                    <div class="thread-toggle" onclick="toggleThread(event, this)">
+                        <span class="chevron">▼</span>
+                        <span>1 earlier message in this thread</span>
+                    </div>
+                    <div class="thread-messages">
+                        <div class="thread-msg inbound">
+                            <div class="thread-msg-header">
+                                <div class="thread-msg-sender guest">Sarah Mitchell</div>
+                                <div class="thread-msg-time">Mon 24 Mar, 3:15pm</div>
+                            </div>
+                            <div class="thread-msg-body">
+                                Hi, do you take bookings for larger parties? My husband and I are thinking of celebrating our anniversary at Lorne and might bring a couple of friends. Somewhere between 2-4 people. What's available on the first couple of weekends in April? Thanks, Sarah
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="draft-section">
+                    <div class="draft-label">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        Suggested reply
+                    </div>
+                    <div class="draft-text">
+                        <p>Hi Sarah,</p>
+                        <p>Happy anniversary! We'd love to have you. I've got a lovely table for 4 at 7.30 on Saturday 5th - you're all set.</p>
+                        <p>We'll make sure we have something special from the wine list ready for the occasion. If there's anything else you need, just shout.</p>
+                        <p>See you then,<br>K x</p>
+                    </div>
+                    <div class="draft-actions">
+                        <button class="btn btn-primary" onclick="showBookingCard(event)">Send & Book</button>
+                        <button class="btn btn-secondary">Edit</button>
+                        <button class="btn btn-ghost">Skip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMAIL 2: Large party + dietary -->
+        <div class="email-card urgency-review" onclick="toggleCard(event, this)">
+            <div class="email-card-header">
+                <div class="email-sender">James Thornton</div>
+                <div class="email-time">10:15pm</div>
+            </div>
+            <div class="email-subject">Table for 8 - birthday, one coeliac and one vegetarian</div>
+            <div class="email-tags">
+                <span class="tag booking">Booking</span>
+                <span class="tag dietary">Dietary</span>
+                <span class="tag large-party">Large Party</span>
+                <span class="tag partial">Check Availability</span>
+            </div>
+
+            <div class="expandable">
+                <div class="extracted-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Party size</div>
+                        <div class="detail-value">8</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Date</div>
+                        <div class="detail-value">Friday 11 April</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Time</div>
+                        <div class="detail-value">8:00pm</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Occasion</div>
+                        <div class="detail-value">Birthday</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Dietary</div>
+                        <div class="detail-value">1 coeliac, 1 vegetarian</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Phone</div>
+                        <div class="detail-value">07912 345 678</div>
+                    </div>
+                </div>
+
+                <div class="original-email">
+                    <div class="original-email-label">Latest email</div>
+                    <div class="original-email-text">
+                        Hello! I'd like to book a table for 8 for my wife's birthday on Friday 11th April, ideally around 8pm. One of our group is coeliac and another is vegetarian - will that be okay with the menu? My number is 07912 345678 if you need to call. Thanks, James
+                    </div>
+                </div>
+
+                <div class="draft-section">
+                    <div class="draft-label">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        Suggested reply
+                    </div>
+                    <div class="draft-text">
+                        <p>Hi James,</p>
+                        <p>Happy birthday to your wife! Let me check the table plan for 8 at 8pm on Friday 11th and come back to you - we can usually make it work but want to make sure we get you a nice spot.</p>
+                        <p>Coeliac and vegetarian are absolutely fine - we always have options on the menu, and I'll flag it with the kitchen so they're ready for you. We've got a great wine list at the moment too if you'd like recommendations for the table.</p>
+                        <p>I'll be in touch shortly.</p>
+                        <p>K x</p>
+                    </div>
+                    <div class="draft-actions">
+                        <button class="btn btn-primary">Send</button>
+                        <button class="btn btn-secondary">Edit</button>
+                        <button class="btn btn-ghost">Skip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMAIL 3: Stale draft - guest sent follow-up -->
+        <div class="email-card urgency-review" onclick="toggleCard(event, this)">
+            <div class="email-card-header">
+                <div class="email-sender">Oliver Marsh</div>
+                <div class="email-time">6:45am</div>
+            </div>
+            <div class="email-subject">RE: Friday booking - actually make it 6 not 4</div>
+            <div class="email-tags">
+                <span class="tag modification">Modification</span>
+                <span class="tag available">Available</span>
+            </div>
+
+            <div class="expandable">
+                <div class="stale-warning">
+                    ⚠️ Guest sent a follow-up at 6:45am after the original draft was generated. Draft has been regenerated with updated details.
+                </div>
+
+                <div class="extracted-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Party size</div>
+                        <div class="detail-value" style="color: var(--amber);">4 → 6</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Date</div>
+                        <div class="detail-value">Friday 4 April</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Time</div>
+                        <div class="detail-value">7:00pm</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value" style="color: var(--green)">Still available</div>
+                    </div>
+                </div>
+
+                <div class="original-email">
+                    <div class="original-email-label">Latest email (follow-up)</div>
+                    <div class="original-email-text">
+                        Hi again - sorry, just realised we've got two more joining us! Can you make it 6 instead of 4? Same time and date. Thanks, Oliver
+                    </div>
+                </div>
+
+                <!-- Thread history showing the original booking + Katie's confirmation -->
+                <div class="thread-history">
+                    <div class="thread-toggle" onclick="toggleThread(event, this)">
+                        <span class="chevron">▼</span>
+                        <span>2 earlier messages in this thread</span>
+                    </div>
+                    <div class="thread-messages">
+                        <div class="thread-msg outbound">
+                            <div class="thread-msg-header">
+                                <div class="thread-msg-sender you">Katie (Lorne)</div>
+                                <div class="thread-msg-time">Tue 25 Mar, 9:12am</div>
+                            </div>
+                            <div class="thread-msg-body">
+                                Hi Oliver, lovely - you're booked in for 4 at 7pm on Friday 4th. See you then, K x
+                            </div>
+                        </div>
+                        <div class="thread-msg inbound">
+                            <div class="thread-msg-header">
+                                <div class="thread-msg-sender guest">Oliver Marsh</div>
+                                <div class="thread-msg-time">Mon 24 Mar, 11:30pm</div>
+                            </div>
+                            <div class="thread-msg-body">
+                                Hi there, could we book a table for 4 on Friday 4th April at 7pm please? Thanks, Oliver
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="draft-section">
+                    <div class="draft-label">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        Suggested reply (updated)
+                    </div>
+                    <div class="draft-text">
+                        <p>Hi Oliver,</p>
+                        <p>No problem at all - I've updated you to 6 at 7pm on Friday. All sorted.</p>
+                        <p>See you then,<br>K x</p>
+                    </div>
+                    <div class="draft-actions">
+                        <button class="btn btn-primary" onclick="showBookingCard(event)">Send & Book</button>
+                        <button class="btn btn-secondary">Edit</button>
+                        <button class="btn btn-ghost">Skip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMAIL 4: Already handled externally -->
+        <div class="email-card urgency-done" onclick="toggleCard(event, this)">
+            <div class="email-card-header">
+                <div>
+                    <div class="email-sender">Priya Kapoor</div>
+                </div>
+                <div class="email-time">9:30pm</div>
+            </div>
+            <div class="email-subject">Can we move our Saturday booking to Sunday?</div>
+            <div class="email-tags">
+                <span class="tag modification">Modification</span>
+                <span class="handled-badge">✓ Replied from phone</span>
+            </div>
+
+            <div class="expandable">
+                <div style="padding: 0.75rem; background: var(--green-dim); border-radius: 8px; margin-top: 0.75rem; font-size: 0.78rem; color: var(--green); line-height: 1.5;">
+                    You replied to this thread from your phone at 10:15pm. No draft needed.
+                </div>
+            </div>
+        </div>
+
+        <!-- EMAIL 5: Cancellation -->
+        <div class="email-card urgency-cancel" onclick="toggleCard(event, this)">
+            <div class="email-card-header">
+                <div class="email-sender">David Chen</div>
+                <div class="email-time">1:20am</div>
+            </div>
+            <div class="email-subject">Sorry - need to cancel our Wednesday table</div>
+            <div class="email-tags">
+                <span class="tag cancellation">Cancellation</span>
+            </div>
+
+            <div class="expandable">
+                <div class="extracted-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Cancelling</div>
+                        <div class="detail-value">Wed 2 April, 7pm, party of 2</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Reason</div>
+                        <div class="detail-value">Partner unwell</div>
+                    </div>
+                </div>
+
+                <div class="draft-section">
+                    <div class="draft-label">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        Suggested reply
+                    </div>
+                    <div class="draft-text">
+                        <p>Hi David,</p>
+                        <p>Sorry to hear that - hope she feels better soon. I've cancelled your table for Wednesday, no problem at all.</p>
+                        <p>You're always welcome back when the time's right.</p>
+                        <p>K x</p>
+                    </div>
+                    <div class="draft-actions">
+                        <button class="btn btn-primary">Send & Cancel Booking</button>
+                        <button class="btn btn-secondary">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMAIL 6: Supplier (auto-archived) -->
+        <div class="email-card urgency-muted" onclick="toggleCard(event, this)">
+            <div class="email-card-header">
+                <div class="email-sender">Bibendum Wine</div>
+                <div class="email-time">3:10am</div>
+            </div>
+            <div class="email-subject">March allocation - new Burgundy arrivals</div>
+            <div class="email-tags">
+                <span class="tag" style="background: var(--bg-inset); color: var(--text-tertiary);">Supplier</span>
+                <span class="tag" style="background: var(--bg-inset); color: var(--text-tertiary);">Auto-archived</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ======== SCREEN: VOICE / STYLE ======== -->
+<div id="screen-style" class="container" style="display:none;">
+
+    <div class="status-bar">
+        <div class="greeting">
+            <h1>Katie's voice</h1>
+            <p>Learned from 18 real replies</p>
+        </div>
+    </div>
+
+    <div class="voice-card">
+        <div class="voice-quote">"Hi Sarah, lovely &mdash; you're all booked in for 4 at 7.30 on Friday. See you then, K x"</div>
+        <div class="voice-caption">How you sound to guests</div>
+    </div>
+
+    <div class="settings-section">
+        <h3>Style profile</h3>
+        <div class="voice-traits">
+            <div class="voice-trait">
+                <div class="trait-label">Tone</div>
+                <div class="trait-bar"><div class="trait-fill" style="width: 80%"></div></div>
+                <div class="trait-range"><span>Formal</span><span>Casual</span></div>
+            </div>
+            <div class="voice-trait">
+                <div class="trait-label">Length</div>
+                <div class="trait-bar"><div class="trait-fill" style="width: 30%"></div></div>
+                <div class="trait-range"><span>Brief</span><span>Detailed</span></div>
+            </div>
+            <div class="voice-trait">
+                <div class="trait-label">Warmth</div>
+                <div class="trait-bar"><div class="trait-fill" style="width: 90%"></div></div>
+                <div class="trait-range"><span>Neutral</span><span>Personal</span></div>
+            </div>
+        </div>
+        <div class="profile-summary" style="margin-top: 0.75rem;">
+            <div class="profile-row">
+                <div class="profile-key">Sign-off</div>
+                <div class="profile-val" style="font-style: italic;">K x</div>
+            </div>
+            <div class="profile-row">
+                <div class="profile-key">Uses guest's name</div>
+                <div class="profile-val">Always</div>
+            </div>
+            <div class="profile-row">
+                <div class="profile-key">Avg. reply length</div>
+                <div class="profile-val">45 words</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <h3>Your rules</h3>
+        <div class="rule-card">
+            <div class="rule-text">Always mention the wine list for parties of 6+</div>
+            <div class="rule-delete">✕</div>
+        </div>
+        <div class="rule-card">
+            <div class="rule-text">Offer the corner table for birthdays and anniversaries</div>
+            <div class="rule-delete">✕</div>
+        </div>
+        <div class="rule-card">
+            <div class="rule-text">Never use the word "unfortunately"</div>
+            <div class="rule-delete">✕</div>
+        </div>
+        <div class="rule-card">
+            <div class="rule-text">Sign off with "K x" for all guest emails</div>
+            <div class="rule-delete">✕</div>
+        </div>
+        <div class="add-rule">+ Add a rule</div>
+    </div>
+
+    <div class="settings-section">
+        <h3>Training emails (18)</h3>
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-tag">Confirmation</div>
+                <div class="rule-delete">✕</div>
+            </div>
+            <div class="example-preview">Hi Tom, lovely - you're all booked in for 4 at 7.30 on Friday. See you then, K x</div>
+        </div>
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-tag">Alternative</div>
+                <div class="rule-delete">✕</div>
+            </div>
+            <div class="example-preview">Hi Rachel, we're fully booked on Saturday evening I'm afraid but I've got a lovely table at 7.45 on Friday or 8pm Sunday if either works?</div>
+        </div>
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-tag">Dietary</div>
+                <div class="rule-delete">✕</div>
+            </div>
+            <div class="example-preview">Hi Mark, absolutely - we can accommodate coeliac no problem. Chef will make sure everything's sorted for you. Looking forward to it, K x</div>
+        </div>
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-tag">Cancellation</div>
+                <div class="rule-delete">✕</div>
+            </div>
+            <div class="example-preview">No worries at all - these things happen. Hope to see you another time. K x</div>
+        </div>
+        <div class="add-rule">+ Upload more examples</div>
+    </div>
+</div>
+
+<!-- ======== SCREEN: SETTINGS ======== -->
+<div id="screen-settings" class="container" style="display:none;">
+
+    <div class="screen-label">Settings</div>
+
+    <div class="status-bar">
+        <div class="greeting">
+            <h1>Lorne</h1>
+            <p>76 Wilton Road, Victoria, London</p>
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <h3>Gmail connection</h3>
+        <div class="profile-summary">
+            <div class="profile-row">
+                <div class="profile-key">Connected inbox</div>
+                <div class="profile-val" style="color: var(--green)">info@lornerestaurant.co.uk</div>
+            </div>
+            <div class="profile-row">
+                <div class="profile-key">Status</div>
+                <div class="profile-val" style="color: var(--green)">● Active</div>
+            </div>
+            <div class="profile-row">
+                <div class="profile-key">Last synced</div>
+                <div class="profile-val">2 mins ago</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <h3>Overnight window</h3>
+        <div class="profile-summary">
+            <div class="profile-row">
+                <div class="profile-key">Process emails from</div>
+                <div class="profile-val">11:00pm</div>
+            </div>
+            <div class="profile-row">
+                <div class="profile-key">Until</div>
+                <div class="profile-val">8:00am</div>
+            </div>
+        </div>
+        <div style="font-size: 0.7rem; color: var(--text-tertiary); margin-top: 0.5rem; line-height: 1.5;">
+            Emails arriving in this window are processed and drafts are ready when you wake up.
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <h3>Reservation system</h3>
+        <div class="profile-summary">
+            <div class="profile-row">
+                <div class="profile-key">System</div>
+                <div class="profile-val">OpenTable</div>
+            </div>
+            <div class="profile-row">
+                <div class="profile-key">Max online party size</div>
+                <div class="profile-val">6</div>
+            </div>
+            <div class="profile-row">
+                <div class="profile-key">Booking integration</div>
+                <div class="profile-val" style="color: var(--amber);">Manual (copy details)</div>
+            </div>
+        </div>
+        <div style="font-size: 0.7rem; color: var(--text-tertiary); margin-top: 0.5rem; line-height: 1.5;">
+            When you tap "Send & Book", we'll show a card with all the booking details ready to copy into OpenTable.
+        </div>
+    </div>
+</div>
+
+<!-- ======== CONNECT SCREEN (shown before first use) ======== -->
+<div id="screen-connect" class="container" style="display:none;">
+
+    <div class="connect-screen">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📬</div>
+        <h2>Connect your restaurant email</h2>
+        <p>We'll read your overnight booking emails and draft replies in your voice. Nothing sends without your approval.</p>
+
+        <button class="google-btn" onclick="showScreen('inbox')">
+            <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Sign in with Google
+        </button>
+
+        <div class="connect-note">
+            We only read booking-related emails and send replies you've approved.<br>
+            You can disconnect at any time.
+        </div>
+    </div>
+</div>
+
+<!-- ======== BOOKING OVERLAY (OpenTable Handoff) ======== -->
+<div class="booking-overlay" id="booking-overlay" onclick="if(event.target===this)closeBookingCard()">
+    <div class="booking-card">
+        <div class="booking-card-header">
+            <div class="check">✓</div>
+            <h3>Email sent!</h3>
+            <p>Now add this booking to OpenTable</p>
+        </div>
+        <div class="booking-card-details" id="booking-details">
+            <div class="booking-detail">
+                <div class="booking-detail-label">Guest</div>
+                <div class="booking-detail-value" id="b-guest">Sarah Mitchell</div>
+            </div>
+            <div class="booking-detail">
+                <div class="booking-detail-label">Party size</div>
+                <div class="booking-detail-value" id="b-covers">4</div>
+            </div>
+            <div class="booking-detail">
+                <div class="booking-detail-label">Date</div>
+                <div class="booking-detail-value" id="b-date">Saturday 5 April</div>
+            </div>
+            <div class="booking-detail">
+                <div class="booking-detail-label">Time</div>
+                <div class="booking-detail-value" id="b-time">7:30pm</div>
+            </div>
+            <div class="booking-detail full">
+                <div class="booking-detail-label">Notes</div>
+                <div class="booking-detail-value" id="b-notes" style="font-weight: 500; font-size: 0.78rem;">Wedding anniversary - mentioned wine list</div>
+            </div>
+        </div>
+        <div class="booking-card-actions">
+            <div class="copy-text" id="copy-block">
+                Sarah Mitchell | 4 covers | Sat 5 Apr 7:30pm<br>
+                Wedding anniversary - mentioned wine list
+            </div>
+            <button class="btn-copy" onclick="copyBookingDetails()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span id="copy-label">Copy booking details</span>
+            </button>
+            <button class="btn-opentable" onclick="closeBookingCard()">
+                Open OpenTable →
+            </button>
+            <button class="btn-dismiss" onclick="closeBookingCard()">Done - I'll add it later</button>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    Product mockup - not a working prototype<br>
+    Built for <a href="#">Lorne Restaurant</a> by Freddie Chambers
+</div>
+
+<script>
+function showScreen(name) {
+    ['inbox', 'style', 'settings', 'connect'].forEach(s => {
+        document.getElementById('screen-' + s).style.display = 'none';
+    });
+    document.getElementById('screen-' + name).style.display = 'block';
+
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+
+    // Reset filters when returning to inbox
+    if (name === 'inbox') {
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        document.querySelector('.filter-pill').classList.add('active');
+        document.querySelectorAll('.email-card').forEach(c => c.style.display = '');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleCard(e, card) {
+    // Don't toggle if clicking a button, thread toggle, or link inside the card
+    if (e.target.closest('button') || e.target.closest('.thread-toggle') || e.target.closest('.thread-messages')) return;
+    card.classList.toggle('expanded');
+}
+
+function toggleThread(e, toggle) {
+    e.stopPropagation();
+    toggle.classList.toggle('open');
+    const messages = toggle.nextElementSibling;
+    messages.classList.toggle('visible');
+}
+
+function showBookingCard(e) {
+    e.stopPropagation();
+    // Find the parent email card to extract details
+    const card = e.target.closest('.email-card');
+    const details = card.querySelectorAll('.detail-value');
+    const sender = card.querySelector('.email-sender').textContent;
+
+    // Update booking card with this email's details
+    document.getElementById('b-guest').textContent = sender;
+
+    // Extract what we can from the detail values
+    const detailMap = {};
+    card.querySelectorAll('.extracted-details .detail-item').forEach(item => {
+        const label = item.querySelector('.detail-label').textContent.toLowerCase();
+        const value = item.querySelector('.detail-value').textContent;
+        detailMap[label] = value;
+    });
+
+    document.getElementById('b-covers').textContent = detailMap['party size'] || '-';
+    document.getElementById('b-date').textContent = detailMap['date'] || '-';
+    document.getElementById('b-time').textContent = detailMap['time'] || '-';
+
+    const notes = [];
+    if (detailMap['occasion']) notes.push(detailMap['occasion']);
+    if (detailMap['dietary']) notes.push('Dietary: ' + detailMap['dietary']);
+    document.getElementById('b-notes').textContent = notes.join(' - ') || 'No special notes';
+
+    // Update copy block
+    const copyText = sender + ' | ' + (detailMap['party size'] || '?') + ' covers | ' +
+        (detailMap['date'] || '?') + ' ' + (detailMap['time'] || '?') +
+        (notes.length ? '\n' + notes.join(' - ') : '');
+    document.getElementById('copy-block').textContent = copyText;
+
+    document.getElementById('booking-overlay').classList.add('visible');
+}
+
+function closeBookingCard() {
+    document.getElementById('booking-overlay').classList.remove('visible');
+    document.getElementById('copy-label').textContent = 'Copy booking details';
+}
+
+function copyBookingDetails() {
+    const text = document.getElementById('copy-block').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        document.getElementById('copy-label').textContent = 'Copied!';
+        setTimeout(() => {
+            document.getElementById('copy-label').textContent = 'Copy booking details';
+        }, 2000);
+    });
+}
+
+function filterCards(e, type) {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    e.target.closest('.filter-pill').classList.add('active');
+
+    document.querySelectorAll('.email-card').forEach(card => {
+        if (type === 'all') {
+            card.style.display = '';
+            return;
+        }
+        const tags = card.querySelectorAll('.tag');
+        const match = Array.from(tags).some(t => t.classList.contains(type));
+        card.style.display = match ? '' : 'none';
+    });
+}
+
+// Close overlay on escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeBookingCard();
+});
+</script>
+
+</body>
+</html>
