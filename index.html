@@ -209,6 +209,35 @@ body {
     margin-top: 0.75rem;
 }
 
+/* ---- FILM ---- */
+.film-section {
+    padding: 2.5rem 0 0.5rem;
+    position: relative;
+}
+
+.film-frame {
+    max-width: 680px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 32px 80px rgba(44, 37, 32, 0.1), 0 8px 24px rgba(44, 37, 32, 0.05);
+    background: #1a1512;
+}
+
+.film-frame video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.film-caption {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+}
+
 /* ---- MOCKUP ---- */
 .mockup-section {
     padding: 2.5rem 0 4rem;
@@ -1078,6 +1107,14 @@ body {
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
     </a>
     <p class="hero-note">No card, no commitment to start.</p>
+</section>
+
+<!-- FILM -->
+<section class="film-section section">
+    <div class="film-frame">
+        <video src="film/nightdraft-launch-film.mp4" poster="film/nightdraft-launch-poster.png" autoplay muted loop playsinline controls preload="metadata" aria-label="NightDraft launch film: booking emails answered in your voice, day and night"></video>
+    </div>
+    <p class="film-caption">Sixty seconds. Better with the sound on.</p>
 </section>
 
 <!-- MOCKUP -->
